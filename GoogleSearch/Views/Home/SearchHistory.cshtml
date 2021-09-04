@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GoogleSearch.SearchSummery>
+
+@{
+    ViewBag.Title = "Search History";
+}
+<div class="container">
+
+    <h2>Search History</h2>
+
+    <p>
+        @Html.ActionLink("Back", "Index")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Search Term
+            </th>
+            <th>
+               Search Time
+            </th>
+            <th>
+               Result Count
+            </th>
+            <th>
+                Duration
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="@Url.Action("Index","Home",new { searchText = item.SearchTerm})">@Html.DisplayFor(modelItem => item.SearchTerm)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SearchTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ResultCount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duration)
+                </td>
+
+            </tr>
+        }
+
+    </table>
+</div>
