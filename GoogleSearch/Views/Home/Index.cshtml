@@ -78,15 +78,15 @@
             var searchText = $("#searchbartext").val();
             if (searchText != '') {
                 $.ajax({
-                    type: "POST",
-                    url: '@Url.Action("Search","Home")',
-                    data: '{searchText: ' + JSON.stringify(searchText) + '}',
-                    contentType: "application/json; charset=utf-8",
-                    success: function (response) {
+                    type: "POST", //Specifies the type of request. (GET or POST)
+                    url: '@Url.Action("Search","Home")', //Specifies the URL to send the request to 
+                    data: '{searchText: ' + JSON.stringify(searchText) + '}', //Specifies data to be sent to the server
+                    contentType: "application/json; charset=utf-8", //The content type used when sending data to the server. Default is: "application/x-www-form-urlencoded"
+                    success: function (response) { //A function to be run when the request succeeds
                         $(".loader").hide();
                         $("#searchData").html(response);
                     },
-                    error: function () {
+                    error: function () { //A function to run if the request fails.
                         $(".loader").hide();
                         alert("Error while inserting data");
                     }
